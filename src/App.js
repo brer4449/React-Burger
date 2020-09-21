@@ -1,22 +1,29 @@
 import React, { Component } from "react";
-import Person from "./Person/Person";
+import UserInput from "./Components/HisUserInput";
+import UserOutput from "./Components/HisUserOutput";
 import "./App.css";
 
 class App extends Component {
+  state = {
+    username: "supermax",
+  };
+
+  usernameChangedHandler = (event) => {
+    this.setState({ username: event.target.value });
+  };
+
   render() {
     return (
       <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working</p>
-        <Person />
+        <UserInput
+          changed={this.usernameChangedHandler}
+          currentName={this.state.username}
+        ></UserInput>
+        <UserOutput userName={this.state.username}></UserOutput>
+        <UserOutput userName={this.state.username}></UserOutput>
+        <UserOutput userName={this.state.username}></UserOutput>
       </div>
     );
-    // This code is the exact same as the code above and in fact how React compiles what is above. It is NOT HTML it is JSX
-    // return React.createElement(
-    //   "div",
-    //   { className: "App" },
-    //   React.createElement("h1", null, "Does this work now??!!")
-    // );
   }
 }
 
